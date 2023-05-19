@@ -14,7 +14,7 @@ app.use('/users', userRoutes)
 require('./connection')
 
 const server = require('http').createServer(app);
-const PORT = 5001;
+const port = process.env.PORT;
 const io = require('socket.io')(server, {
   cors: {
     origin: 'http://localhost:3000',
@@ -93,6 +93,6 @@ app.get('/rooms', (req, res)=> {
 })
 
 
-server.listen(PORT, ()=> {
-  console.log('listening to port', PORT)
+server.listen(port, ()=> {
+  console.log(`listening on port ${port}!..`)
 })
